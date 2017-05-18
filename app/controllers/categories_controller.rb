@@ -8,11 +8,19 @@ class CategoriesController < ApplicationController
 	end
 	
 	def new
-		@category = Category.new
+		if params[:admin] == @ADMIN_PASS
+			@category = Category.new
+		else
+			redirect_to categories_path
+		end
 	end
 	
 	def edit
-		@category = Category.find(params[:id])
+		if params[:admin] == @ADMIN_PASS
+			@category = Category.find(params[:id])
+		else
+			redirect_to category_path(Category.find(params[:id]))
+		end
 	end
 	
 	def create
@@ -37,6 +45,6 @@ class CategoriesController < ApplicationController
 	
 	private
 		def category_params
-			params.require(:category).permit(:name, :image)
+			params.require(:category).permit(:name, :image, :admin)
 		end
 end
