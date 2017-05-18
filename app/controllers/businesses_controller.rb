@@ -52,8 +52,8 @@ class BusinessesController < ApplicationController
 	end
 	
 	def search
-		@businesses = Business.where(['name LIKE ? OR description like ?'] + ['%' + params[:q] + '%']*2)\
-		| (Category.where('name LIKE ?', '%' + params[:q] + '%').map {|cat| cat.businesses}).flatten  # Union of sets
+		@businesses = Business.where(['name ILIKE ? OR description ILIKE ?'] + ['%' + params[:q] + '%']*2)\
+		| (Category.where('name ILIKE ?', '%' + params[:q] + '%').map {|cat| cat.businesses}).flatten  # Union of sets
 	end
 	
 	private
