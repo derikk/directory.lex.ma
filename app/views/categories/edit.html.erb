@@ -1,0 +1,4 @@
+<h1>Editing "<%= Category.find(params[:id]).name %>"</h1>
+<% content_for :title do %>Editing category<% end %>
+
+<%= render 'form' %>

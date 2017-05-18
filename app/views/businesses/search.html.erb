@@ -1,0 +1,22 @@
+<h1>Businesses</h1>
+<% content_for :title do %>Businesses<% end %>
+<% num_results = @businesses.length %>
+<% case num_results %>
+  <% when 0 %>
+  <p>There were no results.</p>
+  <% when 1 %>
+  <% controller.redirect_to @businesses.first %>
+  <% else %>
+  <p>Here are your <%= num_results %> search results.</p>
+<% end %>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search listings:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<br><br>
+<div id="wrapper">
+<%= render @businesses %>
+</div>

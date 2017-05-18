@@ -1,0 +1,47 @@
+<%= form_for @business do |f| %>
+	<% if @business.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@business.errors.count, "error") %> prohibited
+			this listing from being saved:</h2>
+			<ul>
+				<% @business.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<p>
+		<%= f.label :name %><br>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :image %><br>
+		<%= f.url_field :image %>
+	</p>
+	<p>
+		<%= f.label :address %><br>
+		<%= f.text_field :address %>
+	</p>
+	<p>
+		<%= f.label :phone %><br>
+		<%= f.telephone_field :phone %>
+	</p>
+	<p>
+		<%= f.label :fax %><br>
+		<%= f.telephone_field :fax %>
+	</p>
+	<p>
+		<%= f.label :description %><br>
+		<%= f.text_area :description %>
+	</p>
+	<p>
+		<%= f.label :website %><br>
+		<%= f.url_field :website %>
+	</p>
+	<p>
+		<%= f.label :category_id %><br>
+		<%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id] || @business.category_id), prompt: 'Select a category...') %>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

@@ -1,0 +1,18 @@
+<h1>Businesses</h1>
+<% content_for :title do %>Businesses<% end %>
+
+<p>Here is a list of all <%= @businesses.length %> Lexington businesses in the directory.</p>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search listings:") %>
+  <%= text_field_tag(:q) %>
+  <!--<%= search_field(:business, :name) %>-->
+  <%= submit_tag("Search") %>
+<% end %>
+<% if params[:admin] == @ADMIN_PASS %>
+  <%= link_to 'Add business listing', new_business_path(:admin => @ADMIN_PASS) %>
+<% end %>
+<br><br>
+<div id="wrapper">
+<%= render @businesses %>
+</div>

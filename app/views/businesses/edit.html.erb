@@ -1,0 +1,5 @@
+<h1>Editing "<%= Business.find(params[:id]).name %>"</h1>
+<!-- Is this insecure? -->
+<% content_for :title do %>Editing listing<% end %>
+
+<%= render 'form' %>

@@ -1,0 +1,8 @@
+<%= link_to category_path(category) do %>
+<div class="category card">
+	<h2><%= category.name %><span class="count"> (<%= category.businesses.length %>)</span></h2>
+	<% if category.image.present? %>
+		<%= image_tag category.image %>
+	<% end %>
+</div>
+<% end %>
