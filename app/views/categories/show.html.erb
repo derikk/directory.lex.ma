@@ -10,4 +10,6 @@
 <% end %>
 <p>Displaying <%= @category.businesses.count %> businesses in category.</p>
 <br>
-<%= render @category.businesses.order(:name) %>
+<div id="wrapper">
+	<%= render @category.businesses.order(:name) %>
+</div>

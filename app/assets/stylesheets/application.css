@@ -22,3 +22,31 @@
 input, textarea {
     font-size: 1em;
 }
+
+nav a {
+	border-radius: 4px;
+	padding: 0 15px;
+	color: white;
+	text-shadow: 1px 2px 0 #222;
+	font-size: x-large;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+nav {
+	background-color: #1f7cdb;
+	padding: 10px;
+    box-shadow: 0 8px 6px -4px #999;
+    
+    /* Make sticky */
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+body {
+	padding-top: 30px;
+}
