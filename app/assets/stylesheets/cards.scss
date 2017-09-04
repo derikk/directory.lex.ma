@@ -1,0 +1,62 @@
+.card {
+	//border: 2px solid black;
+	//border-radius: 4px;
+	//box-shadow: 0 2px 2px #888;
+	box-shadow: 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px rgba(0,0,0,.12);
+	//background: #DDD;
+	color: black;
+	display: inline-block;
+	margin: 5px 0;
+	padding: 4px 8px;
+	text-align: center;
+
+	width: 30vw;
+	img {
+		width: 25vw;
+	}
+}
+.card:hover {
+	background: #F0F0F4;
+	box-shadow: 0 2px 2px rgba(0,0,0,.14), 0 5px 10px rgba(0,0,0,.4), 0 1px 5px rgba(0,0,0,.12);
+	
+}
+
+.description {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0 2px;
+}
+
+#wrapper {
+	position: relative;
+	left: 1vw;
+	width: calc(100% - 1.5vw);
+	
+	column-count: 3;
+	column-gap: 5px;
+}
+
+/* Match number of columns to display size */
+@media screen and (max-width: 719px) and (min-width: 480px) {
+	.card {
+		width: 45vw;
+		img {
+			width: 37.5vw;
+		}
+	}
+	#wrapper {
+		column-count: 2;
+	}
+}
+@media screen and (max-width: 479px) {
+	.card {
+		width: 90vw;
+		img {
+			width: 85vw;
+		}
+	}
+	#wrapper {
+		column-count: 1;
+	}
+}

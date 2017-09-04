@@ -8,28 +8,33 @@
 		data: {confirm: 'Are you sure you want to delete this listing?'} %>
 	<br>
 <% end %>
-<% if @business.image.present? %>
+
+<% if @business.premium? %>
 	<%= image_tag @business.image, width: 500 %>
 <% end %>
-
 <div id="details">
-	<% if @business.description.present? %>
+	<% if @business.premium? %>
 		<p><%= @business.description %></p>
+		<% if @business.hours? %>
+			<%= simple_format(@business.hours) %>
+		<% end %>
 	<% end %>
-	<% if @business.address.present? %>
+	<% if @business.address? %>
 		<p>Location: <%= @business.address %></p>
 	<% end %>
 	<p>Phone: <%= @business.phone %></p>
-	<% if @business.fax.present? %>
+	<% if @business.fax? %>
 		<p>Fax: <%= @business.fax %></p>
 	<% end %>
-	<% if @business.website.present? %>
+	<% if @business.website? %>
 		<p><%= link_to "Website", @business.website %></p>
 	<% end %>
-	<% if @business.address.present? %>
-		<iframe width="600" height="450" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCNCZ0Twm_HFRaZ5i-FuPDYs3rLwm4_848&q=<%= @business.address %>, Lexington MA">
+	<% if @business.reservation? %>
+		<%= @business.reservation.html_safe %><br>
 	<% end %>
-</iframe>
+	<% if @business.address? %>
+		<iframe width="600" height="450" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCNCZ0Twm_HFRaZ5i-FuPDYs3rLwm4_848&q=<%= @business.address %>, Lexington MA"></iframe>
+	<% end %>
 </div>
 <hr>
 Category: <%= link_to @business.category.name, category_path(@business.category) %>

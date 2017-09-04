@@ -1,14 +1,14 @@
 <%= link_to business_path(business) do %>
 <div class="business card">
 	<h2><%= business.name %></h2>
-	<% if business.image.present? %>
+	<% if business.premium? %>
 		<%= image_tag business.image %>
-	<% end %>
-	<% if business.address.present? %>
-		<h5><%= business.address %> | <%= business.phone %></h5>
-	<% end %>
-	<% if business.description.present? %>
 		<p class="description"><%= business.description %></p>
+	<% end %>
+	<% if business.address? %>
+		<h5><%= business.address %> | <%= business.phone %></h5>
+	<% else %>
+		<h4><%= business.phone %></h4>
 	<% end %>
 </div>
 <% end %>

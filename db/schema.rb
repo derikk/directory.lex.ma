@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801215754) do
+ActiveRecord::Schema.define(version: 20170903211837) do
 
   create_table "businesses", force: :cascade do |t|
     t.string  "name"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20160801215754) do
     t.text    "description"
     t.string  "website"
     t.integer "category_id"
+    t.text    "hours"
+    t.text    "reservation"
+    t.boolean "premium"
   end
 
   create_table "categories", force: :cascade do |t|

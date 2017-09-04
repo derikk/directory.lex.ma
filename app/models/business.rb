@@ -6,5 +6,6 @@ class Business < ActiveRecord::Base
 		message: 'number must be in the form (123) 456-7890',
 		allow_blank: true
 	}
+	validates :description, :image, presence: true, if: business.premium?
 	belongs_to :category
 end
