@@ -13,11 +13,11 @@
 	<%= image_tag @business.image, width: 500 %>
 <% end %>
 <div id="details">
-	<% if @business.premium? %>
+	<% if @business.description? %>
 		<p><%= @business.description %></p>
-		<% if @business.hours? %>
-			<%= simple_format(@business.hours) %>
-		<% end %>
+	<% end %>
+	<% if @business.premium? && @business.hours? %>
+		<%= simple_format(@business.hours) %>
 	<% end %>
 	<% if @business.address? %>
 		<p>Location: <%= @business.address %></p>
@@ -29,7 +29,7 @@
 	<% if @business.website? %>
 		<p><%= link_to "Website", @business.website %></p>
 	<% end %>
-	<% if @business.reservation? %>
+	<% if @business.premium? && @business.reservation? %>
 		<%= @business.reservation.html_safe %><br>
 	<% end %>
 	<% if @business.address? %>
