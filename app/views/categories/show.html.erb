@@ -1,12 +1,12 @@
 <h1><%= @category.name %></h1>
 <% content_for :title do %><%= @category.name %><% end %>
-<% if params[:admin] == @ADMIN_PASS %>
+<% if session[:password] == @ADMIN_PASS %>
 	<%= link_to 'Edit category', edit_category_path %> |
 	<%= link_to 'Delete category', category_path,
 		method: :delete,
 		data: {confirm: 'Are you sure you want to delete this category?'} %>
 	<br><br>
-	<%= link_to 'Add business', new_business_path(category_id: @category.id, admin: @ADMIN_PASS) %>
+	<%= link_to 'Add business', new_business_path(category_id: @category.id) %>
 <% end %>
 <p>Displaying <%= @category.businesses.count %> businesses in category.</p>
 <br>

@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+	before_action :check_admin!, except: [ :index, :show ]
+
 	def index
 		@categories = Category.order(:name)
 	end
@@ -8,19 +10,11 @@ class CategoriesController < ApplicationController
 	end
 	
 	def new
-		if params[:admin] == @ADMIN_PASS
-			@category = Category.new
-		else
-			redirect_to categories_path
-		end
+		@category = Category.new
 	end
 	
 	def edit
-		if params[:admin] == @ADMIN_PASS
-			@category = Category.find(params[:id])
-		else
-			redirect_to category_path(Category.find(params[:id]))
-		end
+		@category = Category.find(params[:id])
 	end
 	
 	def create
@@ -46,5 +40,13 @@ class CategoriesController < ApplicationController
 	private
 		def category_params
 			params.require(:category).permit(:name, :image)
+		end
+
+		def check_admin!
+			unless session[:password] == @ADMIN_PASS
+				redirect_to categories_path
+				flash[:error] = "You're not logged in'"
+				return false
+			end
 		end
 end

@@ -9,8 +9,8 @@
   <!--<%= search_field(:business, :name) %>-->
   <%= submit_tag("Search") %>
 <% end %>
-<% if params[:admin] == @ADMIN_PASS %>
-  <%= link_to 'Add business listing', new_business_path(:admin => @ADMIN_PASS) %>
+<% if session[:password] == @ADMIN_PASS %>
+  <%= link_to 'Add business listing', new_business_path %>
 <% end %>
 <br><br>
 <div id="wrapper">

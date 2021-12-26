@@ -1,6 +1,6 @@
 <h1>Categories</h1>
 <% content_for :title do %>Categories<% end %>
-<% if params[:admin] == @ADMIN_PASS %>
+<% if session[:password] == @ADMIN_PASS %>
 	<%= link_to 'Add category', new_category_path %>
 <% end %>
 <br><br>

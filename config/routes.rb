@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 	resources :categories
 	
 	get 'search' => 'businesses#search'
+  get 'login' => 'application#set_session_pass'
 	
 	root 'businesses#index'
-	
 	
 
 	# The priority is based upon order of creation: first created -> highest priority.

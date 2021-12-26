@@ -10,15 +10,16 @@
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="theme-color" content="#1f7cdb" />
-
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+	<%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
 </head>
 <body>
 <nav>
-	<%= link_to 'Home', root_path %>
+	<%= link_to 'Lex.ma', 'https://lex.ma' %>
+	<%= link_to 'Businesses', root_path %>
 	<%= link_to 'Categories', categories_path %>
 </nav>
 

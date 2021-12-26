@@ -59,6 +59,7 @@
 	<p>
 		<%= f.label :category_id %><br>
 		<%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id] || @business.category_id), prompt: 'Select a category...') %>
+	</p>
 	<p>
 		<%= f.submit %>
 	</p>

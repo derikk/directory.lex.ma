@@ -1,4 +1,6 @@
 class BusinessesController < ApplicationController
+	before_action :check_admin!, except: [ :index, :show, :search ]
+
 	#TODO: Rename business => listing?
 	def index
 		@businesses = Business.order(:name)
@@ -9,19 +11,11 @@ class BusinessesController < ApplicationController
 	end
 	
 	def new
-		if params[:admin] == @ADMIN_PASS
-			@business = Business.new
-		else
-			redirect_to businesses_path
-		end
+		@business = Business.new
 	end
 	
 	def edit
-		if params[:admin] == @ADMIN_PASS
-			@business = Business.find(params[:id])
-		else
-			redirect_to business_path(Business.find(params[:id]))
-		end
+		@business = Business.find(params[:id])
 	end
 	
 	def create
@@ -60,6 +54,12 @@ class BusinessesController < ApplicationController
 		def business_params
 			params.require(:business).permit(:name, :address, :phone, :fax, :website, :premium, :image, :description, :hours, :reservation, :category_id)
 		end
-	
-	
+
+		def check_admin!
+			unless session[:password] == @ADMIN_PASS
+				redirect_to businesses_path
+				flash[:error] = "You're not logged in"
+				return false
+			end
+		end
 end

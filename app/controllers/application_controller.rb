@@ -1,13 +1,16 @@
 class ApplicationController < ActionController::Base
 	before_action :set_pass
-	# Prevent CSRF attacks by raising an exception.
-	# For APIs, you may want to use :null_session instead.
-	protect_from_forgery with: :exception
+
+	def set_session_pass
+		session[:password] = params[:pass]
+		if session[:password] == ENV["ADMIN_PASS"].presence || false
+			flash[:success] = "Login successful!"
+		end
+		redirect_back(fallback_location: root_path)
+	end
 	
 	private
-	# There's got to be a better way to set this static variable.
-	# Probably read from ENV.
 	def set_pass
-		@ADMIN_PASS = "shmoop"
+		@ADMIN_PASS = ENV["ADMIN_PASS"].presence || false
 	end
 end
